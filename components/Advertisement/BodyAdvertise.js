@@ -13,8 +13,9 @@ export default function TopAdvertise() {
           `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/adsData/get?page=1&limit=10&keyword=&location=body`,
           {
             headers: {
-              'authorization': `Bearer ${getToken() === undefined ? getToken() : getToken()
-                }`,
+              authorization: `Bearer ${
+                getToken() === undefined ? getToken() : getToken()
+              }`,
             },
           }
         )
@@ -25,7 +26,7 @@ export default function TopAdvertise() {
     };
     getAds();
   }, []);
-  // console.log(adsData?.docs, "adsDataa");
+  console.log(adsData?.docs, "adsDataa");
   const w_Image = {
     base: "70vh",
     sm: "150vh",
