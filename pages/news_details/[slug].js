@@ -210,7 +210,10 @@ export default function Detail({ newDetails, getLike, getView }) {
           title="ព័ត៌មានលម្អិត | Go Global TV"
           openGraph={{
             site_name: "ហ្គោគ្លូប៊លធីវី",
-            title: <Markup content={newDetails?.title} />,
+            title: newDetails?.title.replace(
+              /<\/?(?!a)(?!p)(?!img)\w*\b[^>]*>/gi,
+              ""
+            ),
             images: [
               {
                 url: `${newDetails?.socialMediaThumbnail}`,
