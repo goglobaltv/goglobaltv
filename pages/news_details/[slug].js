@@ -26,6 +26,8 @@ import { useRouter } from "next/router";
 import BodyAdvertise from "../../components/Advertisement/BodyAdvertise";
 import RightAdvertise from "../../components/Advertisement/RightAdvertise";
 import { getToken } from "../api/getToken";
+import { GetAllNews } from "../../components/GetAllNews/GetAllNews";
+import { GetPopularNews } from "../../components/GetAllNews/GetPopularNews";
 
 export async function getStaticPaths() {
   return {
@@ -33,7 +35,6 @@ export async function getStaticPaths() {
     fallback: true,
   };
 }
-
 
 export async function getStaticProps(context) {
   const { params } = context;
@@ -47,10 +48,11 @@ export async function getStaticProps(context) {
       newDetails: data,
     },
   };
-
 }
 
 export default function Detail({ newDetails }) {
+  const allNewsData = GetAllNews();
+  const popularNews = GetPopularNews();
   const [allNews, setAllNews] = useState([]);
   const [like, setLike] = useState(ls.get("like"));
   const [viewCount, setViewCount] = useState(0);
@@ -72,8 +74,9 @@ export default function Detail({ newDetails }) {
           `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/news/getNews?page=1&limit=10&keyword=&category=622020fdd0226f986ed9986b`,
           {
             headers: {
-              'authorization': `Bearer ${getToken() === undefined ? getToken() : getToken()
-                }`,
+              authorization: `Bearer ${
+                getToken() === undefined ? getToken() : getToken()
+              }`,
             },
           }
         )
@@ -84,6 +87,7 @@ export default function Detail({ newDetails }) {
     getNewDetail();
     window.addEventListener("scroll", handleScroll, { passive: true });
   }, []);
+  // console.log(allNews, "allNewsaa");
 
   const handleLike = async () => {
     let checkLike = ls.get("like");
@@ -105,18 +109,18 @@ export default function Detail({ newDetails }) {
       await axios
         .put(
           `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/news/like/${slug}`,
-          {
-            headers: {
-              'authorization': `Bearer ${getToken() === undefined ? getToken() : getToken()
-                }`,
-            },
-          },
+          // {
+          //   headers: {
+          //     authorization: `Bearer ${
+          //       getToken() === undefined ? getToken() : getToken()
+          //     }`,
+          //   },
+          // },
           {
             like: likeValue,
           }
         )
-        .then((response) => {
-        });
+        .then((response) => {});
     } catch (err) {
       if (err.response) {
         console.log("Error data", err.response.data);
@@ -136,8 +140,9 @@ export default function Detail({ newDetails }) {
         await axios
           .put(`${process.env.NEXT_PUBLIC_CMS_API}/api/cms/news/view/${slug}`, {
             headers: {
-              'authorization': `Bearer ${getToken() === undefined ? getToken() : getToken()
-                }`,
+              authorization: `Bearer ${
+                getToken() === undefined ? getToken() : getToken()
+              }`,
             },
           })
           .then((response) => {
@@ -253,7 +258,7 @@ export default function Detail({ newDetails }) {
                   p="5px 0px 0px 5px"
                 >
                   {moment(
-                    newDetails?.updatedAt || newDetails?.updatedAt
+                    newDetails?.createdAt || newDetails?.updatedAt
                   ).format("YYYY-MMMM-DD")}
                 </Box>
                 <Spacer />
@@ -336,7 +341,6 @@ export default function Detail({ newDetails }) {
               >
                 <Markup content={newDetails?.article} />
               </Box>
-              {/* <Image src="../1-04.jpg" alt="ត្រីឆ្មើរ" /> */}
               <BodyAdvertise />
               <Box>
                 <Box
@@ -363,11 +367,17 @@ export default function Detail({ newDetails }) {
                   gap={4}
                   paddingBottom="7vw"
                 >
-                  {allNews?.map((newData) => (
-                    <GridItem key={newData?._id}>
-                      <RelatedArticales newData={newData} />
-                    </GridItem>
-                  ))}
+                  {allNewsData
+                    ?.filter(
+                      (newData) =>
+                        newData?.newsCategory?._id ===
+                        newDetails?.newsCategory?._id
+                    )
+                    .map((newData) => (
+                      <GridItem key={newData?._id}>
+                        <RelatedArticales newData={newData} />
+                      </GridItem>
+                    ))}
                 </Grid>
               </Box>
             </GridItem>
@@ -383,16 +393,6 @@ export default function Detail({ newDetails }) {
                   <RightAdvertise />
                 </Box>
               </SimpleGrid>
-              {/* <Image
-                mt="10px"
-                src="../Go Global School-v.gif"
-                alt="School discount"
-              />
-              <Image
-                mt="10px"
-                src="../Mart Ads -05.jpg"
-                alt="Lenovo computer"
-              /> */}
               <Box
                 mt={mt_Popular}
                 boxShadow="0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
@@ -404,7 +404,7 @@ export default function Detail({ newDetails }) {
                   អត្ថបទពេញនិយម
                 </Box>
                 <Box w={width_Advertisement} h="fit-content">
-                  {allNews?.slice(0, 6)?.map((newData) => (
+                  {popularNews?.map((newData) => (
                     <PopularItem key={newData?._id} newData={newData} />
                   ))}
                 </Box>

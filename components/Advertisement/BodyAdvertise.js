@@ -20,13 +20,13 @@ export default function TopAdvertise() {
           }
         )
         .then((res) => {
-          // console.log(res.data.docs);
+          // console.log(res.data.docs, "body image");
           setAdsData(res.data);
         });
     };
     getAds();
   }, []);
-  console.log(adsData?.docs, "adsDataa");
+  // console.log(adsData?.docs, "adsDataa");
   const w_Image = {
     base: "70vh",
     sm: "150vh",
@@ -41,7 +41,13 @@ export default function TopAdvertise() {
         ?.filter((e) => e?.status === true)
         .slice(0, 2)
         .map((e, index) => (
-          <Image key={index} w={w_Image} h="15vh" src={`${e?.imageSrc}`} alt="Image Name" />
+          <Image
+            key={index}
+            w={w_Image}
+            h="15vh"
+            src={`${e?.imageSrc}`}
+            alt="Image Name"
+          />
         ))}
     </div>
   );

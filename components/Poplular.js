@@ -4,31 +4,10 @@ import TruncateMarkup from "react-truncate-markup";
 import PopularItem from "./PopularItem";
 import axios from "axios";
 import { getToken } from "../pages/api/getToken";
+import { GetPopularNews } from "../components/GetAllNews/GetPopularNews";
 
 export default function Popular() {
-  const [popularNews, setPopularNews] = useState([]);
-
-  useEffect(() => {
-    const getPopular = async () => {
-      await axios
-        .get(
-          `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/dashboard/getPopular?page=&limit=6`,
-          {
-            headers: {
-              'authorization': `Bearer ${
-                getToken() === undefined ? getToken() : getToken()
-              }`,
-            },
-          }
-        )
-        .then((res) => {
-          // console.log(res.data.docs);
-          setPopularNews(res.data.docs);
-        });
-    };
-    getPopular();
-  }, []);
-  // console.log(adsData?.docs, "adsDataa");
+  const popularNews = GetPopularNews();
   const width = {
     base: "100%",
     sm: "100%",

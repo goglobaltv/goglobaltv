@@ -1,11 +1,9 @@
-import React  from "react";
+import React from "react";
 import HomePage from "../components/Home/HomePage";
 import { NextSeo } from "next-seo";
 import { GetAllNews } from "../components/GetAllNews/GetAllNews";
 
 export default function home() {
-
-
   return (
     <div>
       <NextSeo

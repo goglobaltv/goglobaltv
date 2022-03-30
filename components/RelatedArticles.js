@@ -5,7 +5,6 @@ import TruncateMarkup from "react-truncate-markup";
 import Link from "next/link";
 import { RiCalendarCheckLine, RiThumbUpLine } from "react-icons/ri";
 import { BsEye } from "react-icons/bs";
-import { Markup } from "interweave";
 import moment from "moment";
 
 export default function RelatedArticales({ newData }) {
@@ -40,7 +39,7 @@ export default function RelatedArticales({ newData }) {
     md: "2.2vw",
     lg: "1.8vw",
     xl: "1.3vw",
-    "2xl": "1.2vw",
+    "2xl": "1vw",
   };
   const icon_p = {
     base: "3vw",
@@ -80,16 +79,21 @@ export default function RelatedArticales({ newData }) {
             pb="0.5vw"
             w="100%"
           >
-            <TruncateMarkup lines={1}>
-              <Box
-                className="cardTitle"
-                fontSize={sub_Title}
-                fontFamily="NiDA Bayon"
-                p="0px 18px 7px 18px"
-              >
-                <Markup content={newData?.title} />
-              </Box>
-            </TruncateMarkup>
+            <Box
+              className="cardTitle"
+              fontSize={sub_Title}
+              fontFamily="NiDA Bayon"
+              p="0px 18px 7px 18px"
+            >
+              <TruncateMarkup lines={2}>
+                <div>
+                  {newData?.title.replace(
+                    /<\/?(?!a)(?!p)(?!img)\w*\b[^>]*>/gi,
+                    ""
+                  )}
+                </div>
+              </TruncateMarkup>
+            </Box>
             <Box pl={icon_p} display="flex" w="100%" p="0px 22px 0px 20px">
               <Box w="50%" display="flex">
                 <Icon as={RiCalendarCheckLine} ml={ml_Icon} fontSize="22px" />
@@ -98,7 +102,7 @@ export default function RelatedArticales({ newData }) {
                   fontSize="12px"
                   p="5px 0px 0px 5px"
                 >
-                  {moment(newData?.updatedAt || newData?.updatedAt).format(
+                  {moment(newData?.createdAt || newData?.updatedAt).format(
                     "YYYY-MMMM-DD"
                   )}
                 </Box>
@@ -116,14 +120,14 @@ export default function RelatedArticales({ newData }) {
                 <Box ml="10px" mt="-2px">
                   |
                 </Box>
-                <Icon as={BsEye} ml="10px" fontSize="22px" />
+                <Icon as={BsEye} ml="10px" mt="1px" fontSize="22px" />
                 <Box
                   fontFamily="Kantumruy-Regular"
                   fontSize="12px"
                   p="5px 0px 0px 5px"
                   mb="5px"
                 >
-                  {newData?.like}
+                  {newData?.view}
                 </Box>
               </Box>
             </Box>

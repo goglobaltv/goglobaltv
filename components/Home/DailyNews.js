@@ -68,9 +68,6 @@ export default function DailyNews({ allNews }) {
             </GridItem>
             <GridItem mt={mt_Popular} colSpan={1}>
               <Weather />
-
-              {/* <Image mt="10px" src="../Go Global School-v.gif" alt="" /> */}
-              {/* <Image mt="20px" src="../Mart Ads -05.jpg" alt="" /> */}
               <SimpleGrid mt="24px" columns={1} spacing={6}>
                 <Box>
                   <RightAdvertise />
@@ -95,8 +92,6 @@ export default function DailyNews({ allNews }) {
                 </Box>
                 <Poplular />
               </Box>
-              {/* <Image mt="10px" src="../Go Global School-v.gif" alt="" />
-              <Image src="../Mart Ads -05.jpg" alt="" /> */}
             </GridItem>
           </Grid>
         </Box>

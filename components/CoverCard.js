@@ -102,7 +102,10 @@ export default function CoverCard({ newData }) {
             >
               <TruncateMarkup lines={2}>
                 <div>
-                  {newData?.title.replace(/<\/?(?!a)(?!p)(?!img)\w*\b[^>]*>/gi,"")}
+                  {newData?.title.replace(
+                    /<\/?(?!a)(?!p)(?!img)\w*\b[^>]*>/gi,
+                    ""
+                  )}
                 </div>
               </TruncateMarkup>
             </Box>
@@ -119,7 +122,7 @@ export default function CoverCard({ newData }) {
                   fontSize="12px"
                   p="5px 0px 0px 5px"
                 >
-                  {moment(newData?.updatedAt || newData?.updatedAt).format(
+                  {moment(newData?.createdAt || newData?.updatedAt).format(
                     "YYYY-MMMM-DD"
                   )}
                 </Box>
@@ -137,14 +140,14 @@ export default function CoverCard({ newData }) {
                 <Box ml="10px" mt="-1px">
                   |
                 </Box>
-                <Icon as={BsEye} ml="10px" mt="1px" fontSize="22px" />
+                <Icon as={BsEye} ml="10px" mt="2px" fontSize="22px" />
                 <Box
                   fontFamily="Kantumruy-Regular"
                   fontSize="12px"
                   p="5px 0px 0px 5px"
                   mb="5px"
                 >
-                  {newData?.like}
+                  {newData?.view}
                 </Box>
               </Box>
             </Box>

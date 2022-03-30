@@ -8,7 +8,7 @@ import Loader from "../components/Loader";
 import NProgress from "nprogress";
 import Head from "next/head";
 import axios from "axios";
-import { setCookies } from 'cookies-next';
+import { setCookies } from "cookies-next";
 
 export default function MyApp({ Component, pageProps }) {
   const breakpoints = createBreakpoints({
@@ -46,25 +46,16 @@ export default function MyApp({ Component, pageProps }) {
     },
   });
 
-
-
-
   useEffect(() => {
-
-
     const loginUser = async () => {
       try {
         await axios
-          .post(
-            `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/users/login`,
-            {
-              email: process.env.NEXT_PUBLIC_CMS_USER_NAME,
-              password: "123321@goglobal$labolgog2022secret111&$",
-            }
-
-          )
+          .post(`${process.env.NEXT_PUBLIC_CMS_API}/api/cms/users/login`, {
+            email: process.env.NEXT_PUBLIC_CMS_USER_NAME,
+            password: "123321@goglobal$labolgog2022secret111&$",
+          })
           .then((response) => {
-            console.log(response?.data);
+            // console.log(response?.data);
             localStorage.setItem("user", response?.data?.data?.token);
             setCookies("user", response?.data?.data?.token);
           });

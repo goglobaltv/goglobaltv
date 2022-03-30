@@ -5,7 +5,6 @@ import TruncateMarkup from "react-truncate-markup";
 import { RiCalendarCheckLine, RiThumbUpLine } from "react-icons/ri";
 import { BsEye } from "react-icons/bs";
 import Link from "next/link";
-import { Markup } from "interweave";
 import moment from "moment";
 
 export default function NewsCard({ dailyNews }) {
@@ -24,6 +23,7 @@ export default function NewsCard({ dailyNews }) {
     xl: "22px",
     "2xl": "24px",
   };
+
   const icon_p = {
     base: "3vw",
     sm: "2vw",
@@ -92,7 +92,7 @@ export default function NewsCard({ dailyNews }) {
                   fontSize="12px"
                   p="5px 0px 0px 5px"
                 >
-                  {moment(dailyNews?.updatedAt || dailyNews?.updatedAt).format(
+                  {moment(dailyNews?.createdAt || dailyNews?.updatedAt).format(
                     "YYYY-MMMM-DD"
                   )}
                 </Box>
@@ -110,14 +110,14 @@ export default function NewsCard({ dailyNews }) {
                 <Box ml="10px" mt="-1px">
                   |
                 </Box>
-                <Icon as={BsEye} ml="10px" mt="1px" fontSize="22px" />
+                <Icon as={BsEye} ml="10px" mt="2px" fontSize="22px" />
                 <Box
                   fontFamily="Kantumruy-Regular"
                   fontSize="12px"
                   p="5px 0px 0px 5px"
                   mb="5px"
                 >
-                  {dailyNews?.like}
+                  {dailyNews?.view}
                 </Box>
               </Box>
             </Box>

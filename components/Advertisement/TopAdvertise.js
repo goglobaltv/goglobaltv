@@ -13,8 +13,9 @@ export default function TopAdvertise() {
           `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/adsData/get?page=1&limit=10&keyword=&location=topBar`,
           {
             headers: {
-              'authorization': `Bearer ${getToken() === undefined ? getToken() : getToken()
-                }`,
+              authorization: `Bearer ${
+                getToken() === undefined ? getToken() : getToken()
+              }`,
             },
           }
         )
@@ -33,7 +34,13 @@ export default function TopAdvertise() {
         ?.filter((e) => e?.status === true)
         .slice(0, 1)
         .map((e, index) => (
-          <Image key={index} w="60vh" h="10vh" src={`${e?.imageSrc}`} alt="Image Name" />
+          <Image
+            key={index}
+            w="60vh"
+            h="10vh"
+            src={`${e?.imageSrc}`}
+            alt="Image Name"
+          />
         ))}
     </div>
   );

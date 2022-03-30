@@ -1,10 +1,9 @@
 import React from "react";
 import { Box, Flex, Image, Icon } from "@chakra-ui/react";
 import TruncateMarkup from "react-truncate-markup";
-import { BsFillPersonFill } from "react-icons/bs";
-import { RiCalendarCheckLine } from "react-icons/ri";
+import { RiCalendarCheckLine, RiThumbUpLine } from "react-icons/ri";
+import { BsEye } from "react-icons/bs";
 import Link from "next/link";
-import { Markup } from "interweave";
 import moment from "moment";
 
 export default function SmallCard({ newData }) {
@@ -22,7 +21,6 @@ export default function SmallCard({ newData }) {
     sm: "2.7vw",
     md: "1.9vw",
     lg: "1vw",
-    xl: "1vw",
     "2xl": "0.8vw",
   };
   const text = {
@@ -30,41 +28,12 @@ export default function SmallCard({ newData }) {
     sm: "67vw",
     md: "39vw",
     lg: "20vw",
-    xl: "20vw",
     "2xl": "16.5vw",
   };
   const padding_l = {
     base: "2vw",
     sm: "1.5vw",
     md: "0.7vw",
-    lg: "0.7vw",
-    xl: "0.7vw",
-    "2xl": "0.7vw",
-  };
-  const text_icon = {
-    base: "3vw",
-    sm: "2.5vw",
-    md: "1.7vw",
-    lg: "0.9vw",
-    xl: "0.9vw",
-    "2xl": "0.7vw",
-  };
-
-  const fontSizeIcon = {
-    base: "4.5vw",
-    sm: "4vw",
-    md: "2.5vw",
-    lg: "1.5vw",
-    xl: "",
-    "2xl": "1vw",
-  };
-  const p = {
-    base: "4.5vw",
-    sm: "4vw",
-    md: "3vw",
-    lg: "1vw",
-    xl: "1vw",
-    "2xl": "1vw",
   };
 
   return (
@@ -86,23 +55,62 @@ export default function SmallCard({ newData }) {
               {newData?.title.replace(/<\/?(?!a)(?!p)(?!img)\w*\b[^>]*>/gi, "")}
             </div>
           </TruncateMarkup>
-          <Flex pt={p}>
-            <Icon as={BsFillPersonFill} mt="2px" fontSize={fontSizeIcon} />
-            <Box mt="2px" fontSize={text_icon} pl="3px">
-              {newData?.author}
+          <Box display="flex" w="100%" pr="22px" mt="10px">
+            <Box w="50%" display="flex">
+              <Icon
+                as={RiCalendarCheckLine}
+                color="brand.100"
+                mt="1px"
+                fontSize="22px"
+              />
+              <Box
+                fontFamily="Kantumruy-Regular"
+                fontSize="12px"
+                p="5px 0px 0px 5px"
+                color="brand.100"
+              >
+                {moment(newData?.createdAt || newData?.updatedAt).format(
+                  "YYYY-MMMM-DD"
+                )}
+              </Box>
             </Box>
-            <Icon
-              as={RiCalendarCheckLine}
-              ml="30px"
-              mt="3px"
-              fontSize={fontSizeIcon}
-            />
-            <Box fontSize={text_icon} mt="2px" pl="5px">
-              {moment(newData?.updatedAt || newData?.updatedAt).format(
-                "YYYY-MMMM-DD"
-              )}
+            <Box w="50%" display="flex" justifyContent="right">
+              <Icon
+                as={RiThumbUpLine}
+                color="brand.100"
+                mt="1px"
+                fontSize="22px"
+              />
+              <Box
+                fontFamily="Kantumruy-Regular"
+                fontSize="12px"
+                p="5px 0px 0px 5px"
+                mb="5px"
+                color="brand.100"
+              >
+                {newData?.like}
+              </Box>
+              <Box ml="10px" mt="-1px" color="brand.100">
+                |
+              </Box>
+              <Icon
+                as={BsEye}
+                color="brand.100"
+                ml="10px"
+                mt="2px"
+                fontSize="22px"
+              />
+              <Box
+                fontFamily="Kantumruy-Regular"
+                fontSize="12px"
+                p="5px 0px 0px 5px"
+                mb="5px"
+                color="brand.100"
+              >
+                {newData?.view}
+              </Box>
             </Box>
-          </Flex>
+          </Box>
         </Box>
       </Flex>
     </Link>
