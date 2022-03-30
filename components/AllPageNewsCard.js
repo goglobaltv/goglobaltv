@@ -79,7 +79,10 @@ export default function AllPageNewsCard({ newData }) {
             >
               <TruncateMarkup lines={2}>
                 <div>
-                  {newData?.title.replace(/<\/?(?!a)(?!p)(?!img)\w*\b[^>]*>/gi)}
+                  {newData?.title.replace(
+                    /<\/?(?!a)(?!p)(?!img)\w*\b[^>]*>/gi,
+                    ""
+                  )}
                 </div>
               </TruncateMarkup>
             </Box>
