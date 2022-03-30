@@ -316,7 +316,7 @@ export default function Detail({ newDetails, getLike, getView }) {
                   fontSize={text_icon}
                   p="5px 0px 0px 5px"
                 >
-                  {getLike}
+                  {countLike}
                 </Box>
                 <Box
                   fontFamily="Kantumruy-Regular"
@@ -338,7 +338,7 @@ export default function Detail({ newDetails, getLike, getView }) {
                   fontSize={text_icon}
                   p="5px 0px 0px 10px"
                 >
-                  ចំនួនចូលមើល {getView}
+                  ចំនួនចូលមើល {viewCount}
                 </Box>
               </Flex>
               <hr />
