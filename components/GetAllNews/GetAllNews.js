@@ -15,7 +15,7 @@ export const GetAllNews = () => {
           },
         })
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setAllNews(res.data);
         })
         .catch((err) => {

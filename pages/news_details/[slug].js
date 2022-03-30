@@ -42,7 +42,11 @@ export async function getStaticProps(context) {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/news/${params.slug}`
   );
+
+  console.log(params?.slug, "newsData");
+
   const data = await response.json();
+  console.log(data, "newsData");
   return {
     props: {
       newDetails: data,
@@ -51,6 +55,7 @@ export async function getStaticProps(context) {
 }
 
 export default function Detail({ newDetails }) {
+  // console.log(newDetails, "NewDetails");
   const allNewsData = GetAllNews();
   const popularNews = GetPopularNews();
   const [allNews, setAllNews] = useState([]);
@@ -60,10 +65,11 @@ export default function Detail({ newDetails }) {
   const [countLike, setCountLike] = useState(0);
   const router = useRouter();
   const { slug } = router.query;
+
   useEffect(() => {
     setCountLike(newDetails?.like);
     setViewCount(newDetails?.view);
-    console.log(newDetails?.view);
+    console.log(newDetails, "thhhh");
   }, [newDetails]);
 
   useEffect(() => {
@@ -94,12 +100,12 @@ export default function Detail({ newDetails }) {
     if (checkLike === slug) {
       ls.set("like", "");
       setLike("");
-      addLike(-1);
+      await addLike(-1);
       setCountLike(countLike - 1);
     } else {
       ls.set("like", slug);
       setLike(slug);
-      addLike(1);
+      await addLike(1);
       setCountLike(countLike + 1);
     }
   };
@@ -120,7 +126,9 @@ export default function Detail({ newDetails }) {
             like: likeValue,
           }
         )
-        .then((response) => {});
+        .then((response) => {
+          // console.log(response?.data, "dfdf");
+        });
     } catch (err) {
       if (err.response) {
         console.log("Error data", err.response.data);

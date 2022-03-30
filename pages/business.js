@@ -1,4 +1,4 @@
-import CommercePage from "../components/Business/BusinessPage";
+import BusinessPage from "../components/Business/BusinessPage";
 import { NextSeo } from "next-seo";
 import React from "react";
 import { GetAllNews } from "../components/GetAllNews/GetAllNews";
@@ -29,7 +29,7 @@ export default function Business() {
           cardType: "summary_large_image",
         }}
       />
-      <CommercePage allNews={GetAllNews()} />
+      <BusinessPage allNews={GetAllNews()} />
     </div>
   );
 }

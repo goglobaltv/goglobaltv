@@ -3,7 +3,6 @@ import React from "react";
 import { NextSeo } from "next-seo";
 import { GetAllNews } from "../components/GetAllNews/GetAllNews";
 
-
 export default function Agriculture() {
   return (
     <div>
