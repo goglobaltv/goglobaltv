@@ -50,11 +50,13 @@ export async function getStaticProps(context) {
   return {
     props: {
       newDetails: data,
+      getView: data?.view,
+      getLike: data?.like,
     },
   };
 }
 
-export default function Detail({ newDetails }) {
+export default function Detail({ newDetails, getLike, getView }) {
   // console.log(newDetails, "NewDetails");
   const allNewsData = GetAllNews();
   const popularNews = GetPopularNews();
@@ -67,8 +69,8 @@ export default function Detail({ newDetails }) {
   const { slug } = router.query;
 
   useEffect(() => {
-    setCountLike(newDetails?.like);
-    setViewCount(newDetails?.view);
+    setCountLike(getLike);
+    setViewCount(getView);
     console.log(newDetails, "thhhh");
   }, [newDetails]);
 
@@ -127,7 +129,7 @@ export default function Detail({ newDetails }) {
           }
         )
         .then((response) => {
-          // console.log(response?.data, "dfdf");
+          console.log(response?.data, "like data");
         });
     } catch (err) {
       if (err.response) {
