@@ -57,7 +57,7 @@ export async function getStaticProps(context) {
 }
 
 export default function Detail({ newDetails, getLike, getView }) {
-  // console.log(newDetails, "NewDetails");
+  console.log(newDetails, "NewDetails");
   const allNewsData = GetAllNews();
   const popularNews = GetPopularNews();
   const [allNews, setAllNews] = useState([]);
@@ -213,7 +213,7 @@ export default function Detail({ newDetails, getLike, getView }) {
             title: <Markup content={newDetails?.title} />,
             images: [
               {
-                // url: "http:" + facebookThumbnail.fields.file.url,
+                url: `${newDetails?.socialMediaThumbnail}`,
                 width: 700,
                 height: 500,
                 alt: "Logo",
