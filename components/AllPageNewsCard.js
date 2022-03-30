@@ -124,7 +124,7 @@ export default function AllPageNewsCard({ newData }) {
                   p="5px 0px 0px 5px"
                   mb="5px"
                 >
-                  {newData?.like}
+                  {newData?.view}
                 </Box>
               </Box>
             </Box>
