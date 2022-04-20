@@ -57,7 +57,7 @@ export async function getStaticProps(context) {
 }
 
 export default function Detail({ newDetails, getLike, getView }) {
-  console.log(newDetails, "NewDetails");
+  // console.log(newDetails, "NewDetails");
   const allNewsData = GetAllNews();
   const popularNews = GetPopularNews();
   const [allNews, setAllNews] = useState([]);

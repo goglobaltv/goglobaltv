@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Box, Center } from "@chakra-ui/react";
 import CoverCard from "../CoverCard";
 
-export default function SportSlide({ allnews }) {
+export default function SportSlide({ allNews }) {
   var settings = {
     dots: true,
     infinite: true,
@@ -54,8 +54,8 @@ export default function SportSlide({ allnews }) {
     <Center>
       <Box w={width} mt="20px">
         <Slider {...settings}>
-          {allnews
-            ?.filter((newData) => newData?.newsCategory?.name === "Education")
+          {allNews
+            ?.filter((newData) => newData?.newsCategory?.name === "Sport")
             .map((newData) => (
               <CoverCard key={newData?._id} newData={newData} />
             ))}

@@ -3,6 +3,7 @@ import { Box, Grid, GridItem, Link } from "@chakra-ui/react";
 import SmallCardItem from "../SmallCardItem";
 
 export default function NationalHightlight({ allDailyNews }) {
+  // console.log(allDailyNews, "allDailyNews");
   const title = {
     base: "20px",
     sm: "20px",

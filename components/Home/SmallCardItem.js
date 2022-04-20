@@ -35,6 +35,21 @@ export default function SmallCard({ newData }) {
     sm: "1.5vw",
     md: "0.7vw",
   };
+  const icon_size = {
+    base: "18px",
+    sm: "20px",
+    lg: "18px",
+    "2xl": "22px",
+  };
+  const marginLine = {
+    base: "-3px",
+    "2xl": "-2px",
+  };
+  const mtIcon = {
+    base: "12px",
+    xl: "14px",
+    "2xl": "14px",
+  };
 
   return (
     <Link href={`news_details/${newData?._id}`} passHref>
@@ -55,13 +70,13 @@ export default function SmallCard({ newData }) {
               {newData?.title.replace(/<\/?(?!a)(?!p)(?!img)\w*\b[^>]*>/gi, "")}
             </div>
           </TruncateMarkup>
-          <Box display="flex" w="100%" pr="22px" mt="10px">
+          <Box display="flex" w="100%" pr="20px" mt={mtIcon}>
             <Box w="50%" display="flex">
               <Icon
                 as={RiCalendarCheckLine}
                 color="brand.100"
                 mt="1px"
-                fontSize="22px"
+                fontSize={icon_size}
               />
               <Box
                 fontFamily="Kantumruy-Regular"
@@ -79,7 +94,7 @@ export default function SmallCard({ newData }) {
                 as={RiThumbUpLine}
                 color="brand.100"
                 mt="1px"
-                fontSize="22px"
+                fontSize={icon_size}
               />
               <Box
                 fontFamily="Kantumruy-Regular"
@@ -90,7 +105,7 @@ export default function SmallCard({ newData }) {
               >
                 {newData?.like}
               </Box>
-              <Box ml="10px" mt="-1px" color="brand.100">
+              <Box ml="10px" fontSize="16px" mt={marginLine} color="brand.100">
                 |
               </Box>
               <Icon
@@ -98,7 +113,7 @@ export default function SmallCard({ newData }) {
                 color="brand.100"
                 ml="10px"
                 mt="2px"
-                fontSize="22px"
+                fontSize={icon_size}
               />
               <Box
                 fontFamily="Kantumruy-Regular"

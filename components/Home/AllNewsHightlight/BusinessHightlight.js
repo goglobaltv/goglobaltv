@@ -4,7 +4,6 @@ import { Box, Grid, GridItem, Link } from "@chakra-ui/react";
 import SmallCardItem from "../SmallCardItem";
 
 export default function BusinessHightlight({ allDailyNews }) {
-  // console.log(allDailyNews, "Businesss news");
   const title = {
     base: "20px",
     sm: "20px",

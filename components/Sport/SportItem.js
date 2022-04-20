@@ -12,7 +12,8 @@ import {
 import RightAdvertise from "../Advertisement/RightAdvertise";
 import Weather from "../Weather";
 
-export default function SportItem({ allnews }) {
+export default function SportItem({ allNews }) {
+  // console.log(allNews, "allnews");
   const display_Box = {
     base: "95%",
     sm: "95%",
@@ -72,14 +73,12 @@ export default function SportItem({ allnews }) {
                 templateColumns={{ base: "1fr", lg: "1fr 1fr", md: "1fr" }}
                 gap={4}
               >
-                {allnews
-                  ?.filter(
-                    (newData) => newData?.newsCategory?.name === "International"
-                  )
+                {allNews
+                  ?.filter((newData) => newData?.newsCategory?.name === "Sport")
                   .map((newData) => (
                     <GridItem key={newData?._id} colSpan={1}>
                       <Box>
-                        <AllPageNewsCard allnews={newData} />
+                        <AllPageNewsCard newData={newData} />
                       </Box>
                     </GridItem>
                   ))}

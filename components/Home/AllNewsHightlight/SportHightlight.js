@@ -43,7 +43,7 @@ export default function SportHightlight({ allDailyNews }) {
       <Grid templateColumns={{ base: "1fr", lg: "1fr 1fr", md: "1fr" }} gap={4}>
         <Box>
           {allDailyNews
-            ?.filter((newData) => newData?.newsCategory?.name === "sport")
+            ?.filter((newData) => newData?.newsCategory?.name === "Sport")
             .slice(0, 1)
             .map((newData) => (
               <GridItem key={newData?._id} colSpan={1}>
@@ -55,7 +55,7 @@ export default function SportHightlight({ allDailyNews }) {
         </Box>
         <Box w="100%" h="fit-content" overflow="hidden" mt={mt}>
           {allDailyNews
-            .filter((newData) => newData?.newsCategory?.name === "Education")
+            .filter((newData) => newData?.newsCategory?.name === "Sport")
             .slice(0, 3)
             .map((newData) => (
               <SmallCardItem key={newData?._id} newData={newData} />

@@ -1,6 +1,6 @@
+import React, { useState, useEffect } from "react";
 import { NextSeo } from "next-seo";
 import SportPage from "../components/Sport/SportPage";
-import React from "react";
 import { GetAllNews } from "../components/GetAllNews/GetAllNews";
 
 export default function Sport() {

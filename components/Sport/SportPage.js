@@ -2,12 +2,11 @@ import React from "react";
 import SportItem from "./SportItem";
 import SportSlide from "./SportSlide";
 
-export default function SportPage({ allnews }) {
-  // console.log(allnews);
+export default function SportPage({ allNews }) {
   return (
     <div>
-      <SportSlide allnews={allnews} />
-      <SportItem allnews={allnews} />
+      <SportSlide allNews={allNews} />
+      <SportItem allNews={allNews} />
     </div>
   );
 }

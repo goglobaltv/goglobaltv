@@ -1,4 +1,4 @@
-import Footer from "./Footer";
+import Footer from "../components/Footer/Footer";
 import Menu from "./Navbar/Menu";
 import NavMobile from "../components/Navbar/NavMobile";
 import Logo from "../components/Navbar/Logo";
