@@ -43,7 +43,7 @@ export async function getStaticProps(context) {
     `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/news/${params.slug}`
   );
 
-  console.log(params?.slug, "newsData");
+  // console.log(params?.slug, "newsData");
 
   const data = await response.json();
   console.log(data, "newsData");
@@ -57,7 +57,7 @@ export async function getStaticProps(context) {
 }
 
 export default function Detail({ newDetails, getLike, getView }) {
-  // console.log(newDetails, "NewDetails");
+  // console.log(newDetails, "NewDetails::");
   const allNewsData = GetAllNews();
   const popularNews = GetPopularNews();
   const [allNews, setAllNews] = useState([]);
@@ -71,7 +71,7 @@ export default function Detail({ newDetails, getLike, getView }) {
   useEffect(() => {
     setCountLike(getLike);
     setViewCount(getView);
-    console.log(newDetails, "thhhh");
+    // console.log(newDetails, "thhhh");
   }, [newDetails]);
 
   useEffect(() => {

@@ -69,7 +69,7 @@ export default function CoverCard({ newData }) {
   };
 
   return (
-    <Center>
+    <Box>
       <Link href={`news_details/${newData?._id}`} passHref>
         <Box
           cursor="pointer"
@@ -154,6 +154,6 @@ export default function CoverCard({ newData }) {
           </Box>
         </Box>
       </Link>
-    </Center>
+    </Box>
   );
 }

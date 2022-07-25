@@ -6,7 +6,7 @@ import { Box, Center, Flex, Image } from "@chakra-ui/react";
 import CoverCard from "../CoverCard";
 
 export default function EducationSlide({ allNews }) {
-  // console.log(allNews);
+  // console.log("allNews::", allNews);
   var settings = {
     dots: true,
     infinite: true,
@@ -55,7 +55,7 @@ export default function EducationSlide({ allNews }) {
   return (
     <Center>
       <Box w={width} mt="20px">
-        <Slider {...settings}>
+        <Slider {...settings} dots={true}>
           {allNews
             ?.filter((newData) => newData?.newsCategory?.name === "Education")
             .map((newData) => (
