@@ -58,9 +58,8 @@ export default function EntertainmentSlide({ allNews }) {
           {allNews
             ?.filter(
               (newData) =>
-                newData?.newsCategory?.name === "Entertainment and Tourism"
-            )
-            .map((newData) => (
+                newData?.newsCategory?.name === "Entertainment"
+            )?.slice(0,10)?.map((newData) => (
               <CoverCard key={newData?._id} newData={newData} />
             ))}
         </Slider>

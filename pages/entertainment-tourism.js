@@ -4,6 +4,7 @@ import React from "react";
 import { GetAllNews } from "../components/GetAllNews/GetAllNews";
 
 export default function Entertainment() {
+
   return (
     <div>
       <NextSeo

@@ -82,7 +82,7 @@ export default function EandT_Item({ allNews }) {
                   ?.filter(
                     (newData) =>
                       newData?.newsCategory?.name ===
-                      "Entertainment and Tourism"
+                      "Entertainment"
                   )
                   .map((newData) => (
                     <GridItem colSpan={1} key={newData?._id}>

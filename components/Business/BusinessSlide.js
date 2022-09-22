@@ -5,7 +5,7 @@ import { Box, Center } from "@chakra-ui/react";
 import CoverCard from "../CoverCard";
 
 export default function BusinessSlide({ allNews }) {
-  // console.log(allNews);
+  console.log(allNews);
   var settings = {
     dots: true,
     infinite: true,
