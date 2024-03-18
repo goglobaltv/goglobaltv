@@ -21,7 +21,7 @@ export default function MyApp({ Component, pageProps }) {
 
   const [loading, setLoading] = useState(false);
   Router.events.on("routeChangeStart", (url) => {
-    // console.log("router is Changing..")
+    // console.log("router is Changingsdf..")
     NProgress.start();
     setLoading(true);
   });
