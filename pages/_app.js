@@ -52,10 +52,10 @@ export default function MyApp({ Component, pageProps }) {
         await axios
           .post(`${process.env.NEXT_PUBLIC_CMS_API}/api/cms/users/login`, {
             email: process.env.NEXT_PUBLIC_CMS_USER_NAME,
-            password: "123321@goglobal$labolgog2022secret111&$",
+            password: process.env.NEXT_PUBLIC_CMS_PASSWORD,
           })
           .then((response) => {
-            // console.log(response?.data);
+            console.log(response?.data);
             localStorage.setItem("user", response?.data?.data?.token);
             setCookies("user", response?.data?.data?.token);
           });
@@ -80,7 +80,7 @@ export default function MyApp({ Component, pageProps }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
           integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ=="
           crossOrigin="anonymous"
-          referrerpolicy="no-referrer"
+          referrerPolicy="no-referrer"
         />
         <link rel="icon" href="../logo.png"></link>
       </Head>
