@@ -1,12 +1,8 @@
-import { useEffect } from "react";
-import axios from "axios";
 import { Box, Center, Flex, Spacer, Link } from "@chakra-ui/react";
-import { FiSearch } from "react-icons/fi";
 import { motion } from "framer-motion";
 import React from "react";
 import { useRouter } from "next/router";
 import navStyles from "./Navbar.module.css";
-import SearchButton from "../../components/Search/SearchButton";
 
 export default function Menu() {
   const display_Box = {

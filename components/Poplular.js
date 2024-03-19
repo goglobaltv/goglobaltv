@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Box, Center, Flex, Image, Spacer } from "@chakra-ui/react";
-import TruncateMarkup from "react-truncate-markup";
+import React from "react";
+import { Box, Center } from "@chakra-ui/react";
 import PopularItem from "./PopularItem";
-import axios from "axios";
 import { getToken } from "../pages/api/getToken";
 import { GetPopularNews } from "../components/GetAllNews/GetPopularNews";
 

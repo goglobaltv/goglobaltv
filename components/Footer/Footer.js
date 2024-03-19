@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { SimpleGrid, Center, Flex, Box, Spacer } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
 import axios from "axios";
 import { getToken } from "../../pages/api/getToken";
 import FooterItem from "./FooterItem";
 
 export default function Footer() {
   const [footers, setFooters] = useState();
-  useEffect(async () => {
-    const getFooter = async () => {
+  useEffect(() => {
+    async function getFooter() {
       await axios
         .get(`${process.env.NEXT_PUBLIC_CMS_API}/api/cms/footer/getFooter`, {
           headers: {
-            authorization: `Bearer ${
-              getToken() === undefined ? getToken() : getToken()
-            }`,
+            authorization: `Bearer ${getToken() === undefined ? getToken() : getToken()
+              }`,
           },
         })
         .then((res) => {

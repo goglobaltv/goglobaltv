@@ -8,13 +8,10 @@ function Weather() {
   const [city, setCity] = useState(null);
   const [weather, setWeather] = useState();
 
-
-
   const [location, setLocation] = useState({
     latitude: null,
     longitude: null,
   });
-
 
   var geolocation = require("geolocation");
 
@@ -34,7 +31,6 @@ function Weather() {
       });
     });
   };
-
 
 
   const reverseCoordinate = async ({ lat, lng }) => {

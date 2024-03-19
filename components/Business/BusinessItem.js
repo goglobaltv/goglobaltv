@@ -67,7 +67,6 @@ export default function BusinessItem({ allNews }) {
           <Box bg="brand.200" mb="30px" h="4px" w={w_Line} />
           <Grid
             // h="100vh"
-
             templateColumns={{ base: "1fr", lg: "2.5fr 1fr", md: "2fr 1fr" }}
             gap={4}
           >

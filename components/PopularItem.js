@@ -33,7 +33,6 @@ export default function PopularItem({ newData }) {
         <Box w={widthImg}>
           <Image src={`${newData?.thumbnail}`} alt="image" />
         </Box>
-
         <Box
           fontFamily="Kantumruy-Regular"
           w={title_width}

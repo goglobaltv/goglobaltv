@@ -47,7 +47,7 @@ export default function MyApp({ Component, pageProps }) {
   });
 
   useEffect(() => {
-    const loginUser = async () => {
+    async function loginUser () {
       try {
         await axios
           .post(`${process.env.NEXT_PUBLIC_CMS_API}/api/cms/users/login`, {
@@ -55,7 +55,7 @@ export default function MyApp({ Component, pageProps }) {
             password: process.env.NEXT_PUBLIC_CMS_PASSWORD,
           })
           .then((response) => {
-            console.log(response?.data);
+            // console.log(response?.data);
             localStorage.setItem("user", response?.data?.data?.token);
             setCookies("user", response?.data?.data?.token);
           });

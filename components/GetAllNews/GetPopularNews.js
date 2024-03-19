@@ -4,16 +4,15 @@ import { getToken } from "../../pages/api/getToken";
 
 export const GetPopularNews = () => {
   const [popularNews, setPopularNews] = useState([]);
-  useEffect(async () => {
-    const getPopular = async () => {
+  useEffect(() => {
+    async function getPopular() {
       await axios
         .get(
           `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/dashboard/getPopular?page=&limit=6`,
           {
             headers: {
-              authorization: `Bearer ${
-                getToken() === undefined ? getToken() : getToken()
-              }`,
+              authorization: `Bearer ${getToken() === undefined ? getToken() : getToken()
+                }`,
             },
           }
         )

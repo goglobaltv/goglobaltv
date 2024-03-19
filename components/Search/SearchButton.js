@@ -22,15 +22,14 @@ export default function SearchButton() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const getNewDetail = async () => {
+    async function getNewDetail() {
       await axios
         .get(
           `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/news/getNews?page=1&limit=10&keyword=&category=`,
           {
             headers: {
-              authorization: `Bearer ${
-                getToken() === undefined ? getToken() : getToken()
-              }`,
+              authorization: `Bearer ${getToken() === undefined ? getToken() : getToken()
+                }`,
             },
           }
         )

@@ -7,15 +7,14 @@ export default function TopAdvertise() {
   const [adsData, setAdsData] = useState();
 
   useEffect(() => {
-    const getAds = async () => {
+    async function getAds() {
       await axios
         .get(
           `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/adsData/get?page=1&limit=10&keyword=&location=topBar`,
           {
             headers: {
-              authorization: `Bearer ${
-                getToken() === undefined ? getToken() : getToken()
-              }`,
+              authorization: `Bearer ${getToken() === undefined ? getToken() : getToken()
+                }`,
             },
           }
         )

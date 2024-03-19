@@ -4,14 +4,13 @@ import { getToken } from "../../pages/api/getToken";
 
 export const GetAllNews = () => {
   const [allNews, setAllNews] = useState([]);
-  useEffect(async () => {
-    const getAllNews = async () => {
+  useEffect(() => {
+    async function getAllNews() {
       await axios
         .get(`${process.env.NEXT_PUBLIC_CMS_API}/api/cms/news/getAllNews`, {
           headers: {
-            authorization: `Bearer ${
-              getToken() === undefined ? getToken() : getToken()
-            }`,
+            authorization: `Bearer ${getToken() === undefined ? getToken() : getToken()
+              }`,
           },
         })
         .then((res) => {

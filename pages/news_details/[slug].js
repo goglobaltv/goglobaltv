@@ -46,7 +46,7 @@ export async function getStaticProps(context) {
   // console.log(params?.slug, "newsData");
 
   const data = await response.json();
-  console.log(data, "newsData");
+  // console.log(data, "newsData");
   return {
     props: {
       newDetails: data,
@@ -76,15 +76,14 @@ export default function Detail({ newDetails, getLike, getView }) {
 
   useEffect(() => {
     ls.remove("visiting");
-    const getNewDetail = async () => {
+    async function getNewDetail() {
       await axios
         .get(
           `${process.env.NEXT_PUBLIC_CMS_API}/api/cms/news/getNews?page=1&limit=10&keyword=&category=622020fdd0226f986ed9986b`,
           {
             headers: {
-              authorization: `Bearer ${
-                getToken() === undefined ? getToken() : getToken()
-              }`,
+              authorization: `Bearer ${getToken() === undefined ? getToken() : getToken()
+                }`,
             },
           }
         )
@@ -112,7 +111,7 @@ export default function Detail({ newDetails, getLike, getView }) {
     }
   };
 
-  const addLike = async (likeValue) => {
+  async function addLike(likeValue) {
     try {
       await axios
         .put(
@@ -142,7 +141,7 @@ export default function Detail({ newDetails, getLike, getView }) {
     }
   };
 
-  const handleScroll = async () => {
+  async function handleScroll() {
     let checkView = ls.get("visiting");
     if (checkView != slug) {
       ls.set("visiting", slug);
@@ -150,9 +149,8 @@ export default function Detail({ newDetails, getLike, getView }) {
         await axios
           .put(`${process.env.NEXT_PUBLIC_CMS_API}/api/cms/news/view/${slug}`, {
             headers: {
-              authorization: `Bearer ${
-                getToken() === undefined ? getToken() : getToken()
-              }`,
+              authorization: `Bearer ${getToken() === undefined ? getToken() : getToken()
+                }`,
             },
           })
           .then((response) => {
